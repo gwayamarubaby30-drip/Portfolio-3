@@ -1,0 +1,825 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sumit Shrestha | Basketball Player</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    .font-oswald { font-family: 'Oswald', sans-serif; }
+    .font-inter { font-family: 'Inter', sans-serif; }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% {
+        box-shadow: 0 0 20px rgba(255, 107, 0, 0.3);
+      }
+      50% {
+        box-shadow: 0 0 40px rgba(255, 107, 0, 0.6);
+      }
+    }
+    
+    .animate-fade-in-up {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    
+    .animate-slide-in-left {
+      animation: slideInLeft 0.8s ease-out forwards;
+    }
+    
+    .animate-delay-1 { animation-delay: 0.1s; }
+    .animate-delay-2 { animation-delay: 0.2s; }
+    .animate-delay-3 { animation-delay: 0.3s; }
+    .animate-delay-4 { animation-delay: 0.4s; }
+    .animate-delay-5 { animation-delay: 0.5s; }
+    
+    .stat-card:hover {
+      animation: pulse-glow 1.5s ease-in-out infinite;
+    }
+    
+    .skill-bar {
+      background: linear-gradient(90deg, #ff6b00, #ff9500);
+      transition: width 1s ease-out;
+    }
+    
+    .nav-link {
+      position: relative;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #ff6b00;
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, #ff6b00, #ff9500);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero-bg {
+      background: 
+        radial-gradient(ellipse at 30% 20%, rgba(255, 107, 0, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 80%, rgba(255, 149, 0, 0.1) 0%, transparent 50%),
+        linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+    }
+    
+    .section-dark {
+      background: linear-gradient(180deg, #0f0f0f 0%, #1a1a1a 100%);
+    }
+    
+    .card-glass {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full font-inter text-gray-100 bg-[#0a0a0a]">
+  <div id="app-wrapper" class="w-full h-full overflow-auto"><!-- Navigation -->
+   <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/90 backdrop-blur-md border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"><a href="#home" class="font-oswald text-2xl font-bold tracking-wider"> <span class="text-white">SUMIT</span><span class="text-[#ff6b00]">.</span> </a>
+     <div class="hidden md:flex gap-8"><a href="#home" class="nav-link text-sm uppercase tracking-widest text-gray-300 hover:text-white transition-colors">Home</a> <a href="#about" class="nav-link text-sm uppercase tracking-widest text-gray-300 hover:text-white transition-colors">About</a> <a href="#stats" class="nav-link text-sm uppercase tracking-widest text-gray-300 hover:text-white transition-colors">Stats</a> <a href="#skills" class="nav-link text-sm uppercase tracking-widest text-gray-300 hover:text-white transition-colors">Skills</a> <a href="#gallery" class="nav-link text-sm uppercase tracking-widest text-gray-300 hover:text-white transition-colors">Gallery</a> <a href="#contact" class="nav-link text-sm uppercase tracking-widest text-gray-300 hover:text-white transition-colors">Contact</a>
+     </div><button id="mobile-menu-btn" class="md:hidden text-white">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg></button>
+    </div><!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-[#0a0a0a] border-t border-white/5">
+     <div class="px-6 py-4 flex flex-col gap-4"><a href="#home" class="text-sm uppercase tracking-widest text-gray-300 hover:text-[#ff6b00] transition-colors">Home</a> <a href="#about" class="text-sm uppercase tracking-widest text-gray-300 hover:text-[#ff6b00] transition-colors">About</a> <a href="#stats" class="text-sm uppercase tracking-widest text-gray-300 hover:text-[#ff6b00] transition-colors">Stats</a> <a href="#skills" class="text-sm uppercase tracking-widest text-gray-300 hover:text-[#ff6b00] transition-colors">Skills</a> <a href="#gallery" class="text-sm uppercase tracking-widest text-gray-300 hover:text-[#ff6b00] transition-colors">Gallery</a> <a href="#contact" class="text-sm uppercase tracking-widest text-gray-300 hover:text-[#ff6b00] transition-colors">Contact</a>
+     </div>
+    </div>
+   </nav><!-- Hero Section -->
+   <section id="home" class="hero-bg min-h-screen flex items-center relative overflow-hidden">
+    <div class="absolute inset-0">
+     <div class="absolute top-20 right-10 w-96 h-96 bg-[#ff6b00]/10 rounded-full blur-3xl"></div>
+     <div class="absolute bottom-20 left-10 w-64 h-64 bg-[#ff9500]/10 rounded-full blur-3xl"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 py-32 grid lg:grid-cols-2 gap-12 items-center relative z-10">
+     <div class="space-y-8">
+      <div class="animate-fade-in-up opacity-0 animate-delay-1">
+       <p class="text-[#ff6b00] uppercase tracking-[0.3em] text-sm font-medium mb-4">Professional Basketball Player</p>
+       <h1 id="hero-title" class="font-oswald text-6xl md:text-8xl font-bold uppercase leading-none">Sumit<br><span class="gradient-text">Shrestha</span></h1>
+      </div>
+      <p id="hero-subtitle" class="animate-fade-in-up opacity-0 animate-delay-2 text-xl text-gray-400 max-w-lg leading-relaxed">Speed. Discipline. Court Awareness. Dominating the game with sharp ball handling, accurate shooting, and solid defense.</p>
+      <div class="animate-fade-in-up opacity-0 animate-delay-3 flex flex-wrap gap-4"><a href="#contact" class="inline-flex items-center gap-2 bg-[#ff6b00] hover:bg-[#ff8533] text-white px-8 py-4 rounded-full font-semibold uppercase tracking-wider text-sm transition-all hover:scale-105"> Get In Touch 
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg></a> <a href="#about" class="inline-flex items-center gap-2 border border-white/20 hover:border-[#ff6b00] text-white px-8 py-4 rounded-full font-semibold uppercase tracking-wider text-sm transition-all hover:bg-white/5"> Learn More </a>
+      </div>
+     </div>
+     <div class="animate-fade-in-up opacity-0 animate-delay-4 relative flex justify-center">
+      <div class="relative">
+       <div class="absolute inset-0 bg-gradient-to-br from-[#ff6b00]/30 to-transparent rounded-full blur-2xl scale-110"></div>
+       <div class="w-72 h-72 md:w-96 md:h-96 rounded-full bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border-2 border-[#ff6b00]/30 flex items-center justify-center relative overflow-hidden">
+        <svg class="w-48 h-48 text-[#ff6b00]" viewbox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" /> <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.5" /> <path d="M12 3c-4.97 0-9 4.03-9 9M12 3c4.97 0 9 4.03 9 9" stroke="currentColor" stroke-width="1.5" fill="none" /> <path d="M3 12h18M12 3v18" stroke="currentColor" stroke-width="1" /> <ellipse cx="12" cy="12" rx="3" ry="9" fill="none" stroke="currentColor" stroke-width="1" />
+        </svg>
+        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 text-center"><span class="font-oswald text-5xl font-bold text-white">#23</span>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce"><a href="#about" class="text-gray-500 hover:text-[#ff6b00] transition-colors">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg></a>
+    </div>
+   </section><!-- About Section -->
+   <section id="about" class="section-dark py-24">
+    <div class="max-w-7xl mx-auto px-6">
+     <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="space-y-8">
+       <div>
+        <p class="text-[#ff6b00] uppercase tracking-[0.3em] text-sm font-medium mb-4">About Me</p>
+        <h2 id="about-heading" class="font-oswald text-5xl md:text-6xl font-bold uppercase">The Journey</h2>
+       </div>
+       <div class="space-y-6 text-gray-400 leading-relaxed">
+        <p>I'm Sumit Shrestha, a dedicated basketball player with an unwavering passion for the game. My journey began on the local courts, where I developed my fundamental skills and discovered my love for competition.</p>
+        <p>Known for my speed and court awareness, I bring a complete game to every match. My playing style combines sharp ball handling with accurate shooting and solid defensive capabilities, making me a versatile and reliable presence on the court.</p>
+        <p>Every day is an opportunity to improve. Whether it's perfecting my three-point shot, enhancing my defensive footwork, or studying game film, I'm committed to continuous growth as an athlete and teammate.</p>
+       </div>
+       <div class="flex flex-wrap gap-4">
+        <div class="card-glass rounded-xl px-6 py-4">
+         <p class="text-[#ff6b00] font-oswald text-3xl font-bold">6+</p>
+         <p class="text-gray-500 text-sm uppercase tracking-wider">Years Playing</p>
+        </div>
+        <div class="card-glass rounded-xl px-6 py-4">
+         <p class="text-[#ff6b00] font-oswald text-3xl font-bold">50+</p>
+         <p class="text-gray-500 text-sm uppercase tracking-wider">Matches Played</p>
+        </div>
+        <div class="card-glass rounded-xl px-6 py-4">
+         <p class="text-[#ff6b00] font-oswald text-3xl font-bold">15+</p>
+         <p class="text-gray-500 text-sm uppercase tracking-wider">Tournaments</p>
+        </div>
+       </div>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+       <div class="space-y-4">
+        <div class="card-glass rounded-2xl p-6 h-48 flex flex-col justify-end">
+         <svg class="w-12 h-12 text-[#ff6b00] mb-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+         </svg>
+         <p class="font-oswald text-xl font-bold uppercase">Speed</p>
+         <p class="text-gray-500 text-sm">Quick transitions &amp; fast breaks</p>
+        </div>
+        <div class="card-glass rounded-2xl p-6 h-64 flex flex-col justify-end bg-gradient-to-br from-[#ff6b00]/20 to-transparent">
+         <svg class="w-12 h-12 text-[#ff6b00] mb-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+         </svg>
+         <p class="font-oswald text-xl font-bold uppercase">Defense</p>
+         <p class="text-gray-500 text-sm">Lock-down defender</p>
+        </div>
+       </div>
+       <div class="space-y-4 pt-8">
+        <div class="card-glass rounded-2xl p-6 h-64 flex flex-col justify-end">
+         <svg class="w-12 h-12 text-[#ff6b00] mb-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+         </svg>
+         <p class="font-oswald text-xl font-bold uppercase">Vision</p>
+         <p class="text-gray-500 text-sm">Court awareness &amp; playmaking</p>
+        </div>
+        <div class="card-glass rounded-2xl p-6 h-48 flex flex-col justify-end">
+         <svg class="w-12 h-12 text-[#ff6b00] mb-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
+         </svg>
+         <p class="font-oswald text-xl font-bold uppercase">Passion</p>
+         <p class="text-gray-500 text-sm">Heart &amp; dedication</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Stats Section -->
+   <section id="stats" class="py-24 bg-[#0a0a0a] relative overflow-hidden">
+    <div class="absolute inset-0">
+     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#ff6b00]/5 rounded-full blur-3xl"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+     <div class="text-center mb-16">
+      <p class="text-[#ff6b00] uppercase tracking-[0.3em] text-sm font-medium mb-4">Performance</p>
+      <h2 id="stats-heading" class="font-oswald text-5xl md:text-6xl font-bold uppercase">Season Stats</h2>
+     </div>
+     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="stat-card card-glass rounded-2xl p-8 text-center transition-all hover:scale-105 hover:border-[#ff6b00]/50">
+       <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-[#ff6b00] to-[#ff9500] flex items-center justify-center"><span class="font-oswald text-3xl font-bold text-white">18.5</span>
+       </div>
+       <p class="font-oswald text-2xl font-bold uppercase text-white">PPG</p>
+       <p class="text-gray-500 text-sm mt-2">Points Per Game</p>
+      </div>
+      <div class="stat-card card-glass rounded-2xl p-8 text-center transition-all hover:scale-105 hover:border-[#ff6b00]/50">
+       <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-[#ff6b00] to-[#ff9500] flex items-center justify-center"><span class="font-oswald text-3xl font-bold text-white">5.2</span>
+       </div>
+       <p class="font-oswald text-2xl font-bold uppercase text-white">APG</p>
+       <p class="text-gray-500 text-sm mt-2">Assists Per Game</p>
+      </div>
+      <div class="stat-card card-glass rounded-2xl p-8 text-center transition-all hover:scale-105 hover:border-[#ff6b00]/50">
+       <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-[#ff6b00] to-[#ff9500] flex items-center justify-center"><span class="font-oswald text-3xl font-bold text-white">4.8</span>
+       </div>
+       <p class="font-oswald text-2xl font-bold uppercase text-white">RPG</p>
+       <p class="text-gray-500 text-sm mt-2">Rebounds Per Game</p>
+      </div>
+      <div class="stat-card card-glass rounded-2xl p-8 text-center transition-all hover:scale-105 hover:border-[#ff6b00]/50">
+       <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-[#ff6b00] to-[#ff9500] flex items-center justify-center"><span class="font-oswald text-3xl font-bold text-white">1.8</span>
+       </div>
+       <p class="font-oswald text-2xl font-bold uppercase text-white">SPG</p>
+       <p class="text-gray-500 text-sm mt-2">Steals Per Game</p>
+      </div>
+     </div>
+     <div class="mt-16 grid md:grid-cols-3 gap-8">
+      <div class="card-glass rounded-2xl p-8">
+       <div class="flex justify-between items-center mb-4">
+        <p class="font-oswald text-lg uppercase text-white">Field Goal %</p>
+        <p class="text-[#ff6b00] font-bold">48%</p>
+       </div>
+       <div class="h-3 bg-white/10 rounded-full overflow-hidden">
+        <div class="skill-bar h-full rounded-full" style="width: 48%"></div>
+       </div>
+      </div>
+      <div class="card-glass rounded-2xl p-8">
+       <div class="flex justify-between items-center mb-4">
+        <p class="font-oswald text-lg uppercase text-white">3-Point %</p>
+        <p class="text-[#ff6b00] font-bold">38%</p>
+       </div>
+       <div class="h-3 bg-white/10 rounded-full overflow-hidden">
+        <div class="skill-bar h-full rounded-full" style="width: 38%"></div>
+       </div>
+      </div>
+      <div class="card-glass rounded-2xl p-8">
+       <div class="flex justify-between items-center mb-4">
+        <p class="font-oswald text-lg uppercase text-white">Free Throw %</p>
+        <p class="text-[#ff6b00] font-bold">85%</p>
+       </div>
+       <div class="h-3 bg-white/10 rounded-full overflow-hidden">
+        <div class="skill-bar h-full rounded-full" style="width: 85%"></div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Skills Section -->
+   <section id="skills" class="section-dark py-24">
+    <div class="max-w-7xl mx-auto px-6">
+     <div class="text-center mb-16">
+      <p class="text-[#ff6b00] uppercase tracking-[0.3em] text-sm font-medium mb-4">Capabilities</p>
+      <h2 class="font-oswald text-5xl md:text-6xl font-bold uppercase">Skills &amp; Positions</h2>
+     </div>
+     <div class="grid lg:grid-cols-2 gap-16"><!-- Skills -->
+      <div class="space-y-6">
+       <h3 class="font-oswald text-2xl font-bold uppercase text-[#ff6b00] mb-8">Core Skills</h3>
+       <div class="space-y-6">
+        <div>
+         <div class="flex justify-between mb-2"><span class="text-white font-medium">Ball Handling</span> <span class="text-[#ff6b00]">92%</span>
+         </div>
+         <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+          <div class="skill-bar h-full rounded-full" style="width: 92%"></div>
+         </div>
+        </div>
+        <div>
+         <div class="flex justify-between mb-2"><span class="text-white font-medium">Shooting</span> <span class="text-[#ff6b00]">85%</span>
+         </div>
+         <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+          <div class="skill-bar h-full rounded-full" style="width: 85%"></div>
+         </div>
+        </div>
+        <div>
+         <div class="flex justify-between mb-2"><span class="text-white font-medium">Defense</span> <span class="text-[#ff6b00]">88%</span>
+         </div>
+         <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+          <div class="skill-bar h-full rounded-full" style="width: 88%"></div>
+         </div>
+        </div>
+        <div>
+         <div class="flex justify-between mb-2"><span class="text-white font-medium">Court Vision</span> <span class="text-[#ff6b00]">90%</span>
+         </div>
+         <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+          <div class="skill-bar h-full rounded-full" style="width: 90%"></div>
+         </div>
+        </div>
+        <div>
+         <div class="flex justify-between mb-2"><span class="text-white font-medium">Speed &amp; Agility</span> <span class="text-[#ff6b00]">94%</span>
+         </div>
+         <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+          <div class="skill-bar h-full rounded-full" style="width: 94%"></div>
+         </div>
+        </div>
+        <div>
+         <div class="flex justify-between mb-2"><span class="text-white font-medium">Leadership</span> <span class="text-[#ff6b00]">87%</span>
+         </div>
+         <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+          <div class="skill-bar h-full rounded-full" style="width: 87%"></div>
+         </div>
+        </div>
+       </div>
+      </div><!-- Positions -->
+      <div>
+       <h3 class="font-oswald text-2xl font-bold uppercase text-[#ff6b00] mb-8">Playing Positions</h3>
+       <div class="grid grid-cols-2 gap-4">
+        <div class="card-glass rounded-2xl p-6 border-2 border-[#ff6b00]/50 bg-[#ff6b00]/10">
+         <p class="font-oswald text-3xl font-bold text-white mb-2">PG</p>
+         <p class="text-[#ff6b00] uppercase tracking-wider text-sm">Point Guard</p>
+         <p class="text-gray-400 text-sm mt-2">Primary Position</p>
+        </div>
+        <div class="card-glass rounded-2xl p-6">
+         <p class="font-oswald text-3xl font-bold text-white mb-2">SG</p>
+         <p class="text-gray-400 uppercase tracking-wider text-sm">Shooting Guard</p>
+         <p class="text-gray-500 text-sm mt-2">Secondary Position</p>
+        </div>
+        <div class="card-glass rounded-2xl p-6 col-span-2">
+         <div class="flex items-center gap-4">
+          <div class="w-16 h-16 rounded-full bg-[#ff6b00]/20 flex items-center justify-center">
+           <svg class="w-8 h-8 text-[#ff6b00]" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+           </svg>
+          </div>
+          <div>
+           <p class="font-oswald text-xl font-bold text-white uppercase">Versatile Player</p>
+           <p class="text-gray-400 text-sm">Capable of playing multiple positions as needed</p>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="mt-8 card-glass rounded-2xl p-6">
+        <h4 class="font-oswald text-lg font-bold uppercase text-white mb-4">Physical Stats</h4>
+        <div class="grid grid-cols-3 gap-4 text-center">
+         <div>
+          <p class="text-[#ff6b00] font-oswald text-2xl font-bold">5'10"</p>
+          <p class="text-gray-500 text-xs uppercase">Height</p>
+         </div>
+         <div>
+          <p class="text-[#ff6b00] font-oswald text-2xl font-bold">165</p>
+          <p class="text-gray-500 text-xs uppercase">Weight (lbs)</p>
+         </div>
+         <div>
+          <p class="text-[#ff6b00] font-oswald text-2xl font-bold">6'2"</p>
+          <p class="text-gray-500 text-xs uppercase">Wingspan</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Gallery Section -->
+   <section id="gallery" class="py-24 bg-[#0a0a0a]">
+    <div class="max-w-7xl mx-auto px-6">
+     <div class="text-center mb-16">
+      <p class="text-[#ff6b00] uppercase tracking-[0.3em] text-sm font-medium mb-4">Gallery</p>
+      <h2 class="font-oswald text-5xl md:text-6xl font-bold uppercase">Highlights</h2>
+     </div>
+     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div class="card-glass rounded-2xl aspect-square flex items-center justify-center group hover:border-[#ff6b00]/50 transition-all cursor-pointer overflow-hidden">
+       <div class="text-center p-4">
+        <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[#ff6b00]/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+         <svg class="w-8 h-8 text-[#ff6b00]" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z" />
+         </svg>
+        </div>
+        <p class="text-sm text-gray-400">Game Highlights</p>
+       </div>
+      </div>
+      <div class="card-glass rounded-2xl aspect-square flex items-center justify-center group hover:border-[#ff6b00]/50 transition-all cursor-pointer col-span-2 row-span-2 bg-gradient-to-br from-[#ff6b00]/20 to-transparent">
+       <div class="text-center p-8">
+        <svg class="w-24 h-24 mx-auto mb-4 text-[#ff6b00]" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10" /> <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /> <path d="M2 12h20" />
+        </svg>
+        <p class="font-oswald text-2xl font-bold text-white uppercase">Featured</p>
+        <p class="text-gray-400 mt-2">Best plays of the season</p>
+       </div>
+      </div>
+      <div class="card-glass rounded-2xl aspect-square flex items-center justify-center group hover:border-[#ff6b00]/50 transition-all cursor-pointer">
+       <div class="text-center p-4">
+        <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[#ff6b00]/20 flex items-center justify-center"><span class="text-2xl">🏀</span>
+        </div>
+        <p class="text-sm text-gray-400">Training</p>
+       </div>
+      </div>
+      <div class="card-glass rounded-2xl aspect-square flex items-center justify-center group hover:border-[#ff6b00]/50 transition-all cursor-pointer">
+       <div class="text-center p-4">
+        <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[#ff6b00]/20 flex items-center justify-center"><span class="text-2xl">🏆</span>
+        </div>
+        <p class="text-sm text-gray-400">Tournaments</p>
+       </div>
+      </div>
+      <div class="card-glass rounded-2xl aspect-square flex items-center justify-center group hover:border-[#ff6b00]/50 transition-all cursor-pointer">
+       <div class="text-center p-4">
+        <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[#ff6b00]/20 flex items-center justify-center"><span class="text-2xl">💪</span>
+        </div>
+        <p class="text-sm text-gray-400">Fitness</p>
+       </div>
+      </div>
+      <div class="card-glass rounded-2xl aspect-square flex items-center justify-center group hover:border-[#ff6b00]/50 transition-all cursor-pointer">
+       <div class="text-center p-4">
+        <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[#ff6b00]/20 flex items-center justify-center"><span class="text-2xl">🤝</span>
+        </div>
+        <p class="text-sm text-gray-400">Team</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Achievements Section -->
+   <section class="section-dark py-24">
+    <div class="max-w-7xl mx-auto px-6">
+     <div class="text-center mb-16">
+      <p class="text-[#ff6b00] uppercase tracking-[0.3em] text-sm font-medium mb-4">Recognition</p>
+      <h2 class="font-oswald text-5xl md:text-6xl font-bold uppercase">Achievements</h2>
+     </div>
+     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="card-glass rounded-2xl p-8 hover:border-[#ff6b00]/50 transition-all group">
+       <div class="flex items-start gap-4">
+        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-500 to-yellow-600 flex items-center justify-center flex-shrink-0"><span class="text-xl">🥇</span>
+        </div>
+        <div>
+         <p class="font-oswald text-xl font-bold text-white uppercase">MVP Award</p>
+         <p class="text-gray-400 text-sm mt-1">Regional Championship 2023</p>
+         <p class="text-gray-500 text-xs mt-2">Outstanding performance throughout the tournament</p>
+        </div>
+       </div>
+      </div>
+      <div class="card-glass rounded-2xl p-8 hover:border-[#ff6b00]/50 transition-all group">
+       <div class="flex items-start gap-4">
+        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#ff6b00] to-[#ff9500] flex items-center justify-center flex-shrink-0"><span class="text-xl">🏆</span>
+        </div>
+        <div>
+         <p class="font-oswald text-xl font-bold text-white uppercase">Championship Winner</p>
+         <p class="text-gray-400 text-sm mt-1">Inter-College League 2022</p>
+         <p class="text-gray-500 text-xs mt-2">Led team to victory in final game</p>
+        </div>
+       </div>
+      </div>
+      <div class="card-glass rounded-2xl p-8 hover:border-[#ff6b00]/50 transition-all group">
+       <div class="flex items-start gap-4">
+        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center flex-shrink-0"><span class="text-xl">⭐</span>
+        </div>
+        <div>
+         <p class="font-oswald text-xl font-bold text-white uppercase">All-Star Selection</p>
+         <p class="text-gray-400 text-sm mt-1">District Level 2023</p>
+         <p class="text-gray-500 text-xs mt-2">Selected among top 10 players</p>
+        </div>
+       </div>
+      </div>
+      <div class="card-glass rounded-2xl p-8 hover:border-[#ff6b00]/50 transition-all group">
+       <div class="flex items-start gap-4">
+        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center flex-shrink-0"><span class="text-xl">🎯</span>
+        </div>
+        <div>
+         <p class="font-oswald text-xl font-bold text-white uppercase">3-Point Contest</p>
+         <p class="text-gray-400 text-sm mt-1">Annual Skills Challenge 2023</p>
+         <p class="text-gray-500 text-xs mt-2">First place in shooting competition</p>
+        </div>
+       </div>
+      </div>
+      <div class="card-glass rounded-2xl p-8 hover:border-[#ff6b00]/50 transition-all group">
+       <div class="flex items-start gap-4">
+        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center flex-shrink-0"><span class="text-xl">🛡️</span>
+        </div>
+        <div>
+         <p class="font-oswald text-xl font-bold text-white uppercase">Best Defender</p>
+         <p class="text-gray-400 text-sm mt-1">Season 2022-23</p>
+         <p class="text-gray-500 text-xs mt-2">Most steals and defensive plays</p>
+        </div>
+       </div>
+      </div>
+      <div class="card-glass rounded-2xl p-8 hover:border-[#ff6b00]/50 transition-all group">
+       <div class="flex items-start gap-4">
+        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center flex-shrink-0"><span class="text-xl">📈</span>
+        </div>
+        <div>
+         <p class="font-oswald text-xl font-bold text-white uppercase">Most Improved</p>
+         <p class="text-gray-400 text-sm mt-1">Training Academy 2021</p>
+         <p class="text-gray-500 text-xs mt-2">Recognized for rapid skill development</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Contact Section -->
+   <section id="contact" class="py-24 bg-[#0a0a0a] relative overflow-hidden">
+    <div class="absolute inset-0">
+     <div class="absolute bottom-0 left-0 w-96 h-96 bg-[#ff6b00]/10 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2"></div>
+     <div class="absolute top-0 right-0 w-64 h-64 bg-[#ff9500]/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+     <div class="text-center mb-16">
+      <p class="text-[#ff6b00] uppercase tracking-[0.3em] text-sm font-medium mb-4">Get In Touch</p>
+      <h2 id="contact-heading" class="font-oswald text-5xl md:text-6xl font-bold uppercase">Contact Me</h2>
+      <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Interested in collaborating, discussing opportunities, or inviting me to tournaments? I'd love to hear from you.</p>
+     </div>
+     <div class="grid lg:grid-cols-2 gap-12"><!-- Contact Form -->
+      <div class="card-glass rounded-2xl p-8">
+       <form id="contact-form" class="space-y-6">
+        <div><label for="name" class="block text-sm font-medium text-gray-300 mb-2">Your Name</label> <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#ff6b00] transition-colors" placeholder="Enter your name">
+        </div>
+        <div><label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email Address</label> <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#ff6b00] transition-colors" placeholder="your@email.com">
+        </div>
+        <div><label for="subject" class="block text-sm font-medium text-gray-300 mb-2">Subject</label> <select id="subject" name="subject" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-[#ff6b00] transition-colors"> <option value="general" class="bg-[#1a1a1a]">General Inquiry</option> <option value="tournament" class="bg-[#1a1a1a]">Tournament Invitation</option> <option value="team" class="bg-[#1a1a1a]">Team Opportunity</option> <option value="sponsorship" class="bg-[#1a1a1a]">Sponsorship</option> <option value="collaboration" class="bg-[#1a1a1a]">Collaboration</option> </select>
+        </div>
+        <div><label for="message" class="block text-sm font-medium text-gray-300 mb-2">Message</label> <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#ff6b00] transition-colors resize-none" placeholder="Your message..."></textarea>
+        </div><button type="submit" class="w-full bg-[#ff6b00] hover:bg-[#ff8533] text-white py-4 rounded-xl font-semibold uppercase tracking-wider transition-all hover:scale-[1.02] flex items-center justify-center gap-2"> Send Message 
+         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+         </svg></button>
+       </form>
+       <div id="form-message" class="mt-4 text-center hidden"></div>
+      </div><!-- Contact Info -->
+      <div class="space-y-8">
+       <div class="card-glass rounded-2xl p-8">
+        <h3 class="font-oswald text-2xl font-bold uppercase text-white mb-6">Connect With Me</h3>
+        <div class="space-y-6"><a href="mailto:sumit.shrestha@email.com" class="flex items-center gap-4 text-gray-400 hover:text-[#ff6b00] transition-colors group">
+          <div class="w-12 h-12 rounded-full bg-[#ff6b00]/20 flex items-center justify-center group-hover:bg-[#ff6b00]/30 transition-colors">
+           <svg class="w-5 h-5 text-[#ff6b00]" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+           </svg>
+          </div>
+          <div>
+           <p class="text-sm text-gray-500">Email</p>
+           <p class="text-white">sumit.shrestha@email.com</p>
+          </div></a> <a href="tel:+9771234567890" class="flex items-center gap-4 text-gray-400 hover:text-[#ff6b00] transition-colors group">
+          <div class="w-12 h-12 rounded-full bg-[#ff6b00]/20 flex items-center justify-center group-hover:bg-[#ff6b00]/30 transition-colors">
+           <svg class="w-5 h-5 text-[#ff6b00]" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+           </svg>
+          </div>
+          <div>
+           <p class="text-sm text-gray-500">Phone</p>
+           <p class="text-white">+977 123-456-7890</p>
+          </div></a>
+         <div class="flex items-center gap-4 text-gray-400">
+          <div class="w-12 h-12 rounded-full bg-[#ff6b00]/20 flex items-center justify-center">
+           <svg class="w-5 h-5 text-[#ff6b00]" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+           </svg>
+          </div>
+          <div>
+           <p class="text-sm text-gray-500">Location</p>
+           <p class="text-white">Kathmandu, Nepal</p>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="card-glass rounded-2xl p-8">
+        <h3 class="font-oswald text-xl font-bold uppercase text-white mb-6">Follow Me</h3>
+        <div class="flex gap-4"><a href="#" class="w-12 h-12 rounded-full bg-[#ff6b00]/20 flex items-center justify-center hover:bg-[#ff6b00] transition-colors group">
+          <svg class="w-5 h-5 text-[#ff6b00] group-hover:text-white transition-colors" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+          </svg></a> <a href="#" class="w-12 h-12 rounded-full bg-[#ff6b00]/20 flex items-center justify-center hover:bg-[#ff6b00] transition-colors group">
+          <svg class="w-5 h-5 text-[#ff6b00] group-hover:text-white transition-colors" fill="currentColor" viewbox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+          </svg></a> <a href="#" class="w-12 h-12 rounded-full bg-[#ff6b00]/20 flex items-center justify-center hover:bg-[#ff6b00] transition-colors group">
+          <svg class="w-5 h-5 text-[#ff6b00] group-hover:text-white transition-colors" fill="currentColor" viewbox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+          </svg></a> <a href="#" class="w-12 h-12 rounded-full bg-[#ff6b00]/20 flex items-center justify-center hover:bg-[#ff6b00] transition-colors group">
+          <svg class="w-5 h-5 text-[#ff6b00] group-hover:text-white transition-colors" fill="currentColor" viewbox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+          </svg></a>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="bg-[#0f0f0f] border-t border-white/5 py-8">
+    <div class="max-w-7xl mx-auto px-6">
+     <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+      <div class="flex items-center gap-2"><span class="font-oswald text-xl font-bold tracking-wider"> <span class="text-white">SUMIT</span><span class="text-[#ff6b00]">.</span> </span>
+      </div>
+      <p class="text-gray-500 text-sm">© 2024 Sumit Shrestha. All rights reserved.</p>
+      <div class="flex gap-6"><a href="#home" class="text-gray-500 hover:text-[#ff6b00] text-sm transition-colors">Home</a> <a href="#about" class="text-gray-500 hover:text-[#ff6b00] text-sm transition-colors">About</a> <a href="#contact" class="text-gray-500 hover:text-[#ff6b00] text-sm transition-colors">Contact</a>
+      </div>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script>
+    const defaultConfig = {
+      hero_title: "Sumit Shrestha",
+      hero_subtitle: "Speed. Discipline. Court Awareness. Dominating the game with sharp ball handling, accurate shooting, and solid defense.",
+      about_heading: "The Journey",
+      stats_heading: "Season Stats",
+      contact_heading: "Contact Me",
+      background_color: "#0a0a0a",
+      accent_color: "#ff6b00",
+      text_color: "#f3f4f6",
+      surface_color: "#1a1a1a",
+      font_family: "Oswald",
+      font_size: 16
+    };
+
+    let config = { ...defaultConfig };
+
+    async function onConfigChange(cfg) {
+      config = { ...defaultConfig, ...cfg };
+      
+      // Update hero section
+      const heroTitle = document.getElementById('hero-title');
+      if (heroTitle) {
+        const nameParts = (config.hero_title || defaultConfig.hero_title).split(' ');
+        heroTitle.innerHTML = nameParts.length > 1 
+          ? `${nameParts[0]}<br><span class="gradient-text">${nameParts.slice(1).join(' ')}</span>`
+          : `<span class="gradient-text">${nameParts[0]}</span>`;
+      }
+      
+      const heroSubtitle = document.getElementById('hero-subtitle');
+      if (heroSubtitle) {
+        heroSubtitle.textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+      }
+      
+      const aboutHeading = document.getElementById('about-heading');
+      if (aboutHeading) {
+        aboutHeading.textContent = config.about_heading || defaultConfig.about_heading;
+      }
+      
+      const statsHeading = document.getElementById('stats-heading');
+      if (statsHeading) {
+        statsHeading.textContent = config.stats_heading || defaultConfig.stats_heading;
+      }
+      
+      const contactHeading = document.getElementById('contact-heading');
+      if (contactHeading) {
+        contactHeading.textContent = config.contact_heading || defaultConfig.contact_heading;
+      }
+
+      // Apply colors
+      const accentColor = config.accent_color || defaultConfig.accent_color;
+      const bgColor = config.background_color || defaultConfig.background_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      
+      document.documentElement.style.setProperty('--accent', accentColor);
+      document.body.style.backgroundColor = bgColor;
+      document.body.style.color = textColor;
+
+      // Apply font
+      const fontFamily = config.font_family || defaultConfig.font_family;
+      const fontSize = config.font_size || defaultConfig.font_size;
+      document.querySelectorAll('.font-oswald').forEach(el => {
+        el.style.fontFamily = `${fontFamily}, Oswald, sans-serif`;
+      });
+      document.body.style.fontSize = `${fontSize}px`;
+    }
+
+    function mapToCapabilities(cfg) {
+      return {
+        recolorables: [
+          {
+            get: () => cfg.background_color || defaultConfig.background_color,
+            set: (value) => {
+              cfg.background_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ background_color: value });
+            }
+          },
+          {
+            get: () => cfg.surface_color || defaultConfig.surface_color,
+            set: (value) => {
+              cfg.surface_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ surface_color: value });
+            }
+          },
+          {
+            get: () => cfg.text_color || defaultConfig.text_color,
+            set: (value) => {
+              cfg.text_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => cfg.accent_color || defaultConfig.accent_color,
+            set: (value) => {
+              cfg.accent_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ accent_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => cfg.font_family || defaultConfig.font_family,
+          set: (value) => {
+            cfg.font_family = value;
+            if (window.elementSdk) window.elementSdk.setConfig({ font_family: value });
+          }
+        },
+        fontSizeable: {
+          get: () => cfg.font_size || defaultConfig.font_size,
+          set: (value) => {
+            cfg.font_size = value;
+            if (window.elementSdk) window.elementSdk.setConfig({ font_size: value });
+          }
+        }
+      };
+    }
+
+    function mapToEditPanelValues(cfg) {
+      return new Map([
+        ["hero_title", cfg.hero_title || defaultConfig.hero_title],
+        ["hero_subtitle", cfg.hero_subtitle || defaultConfig.hero_subtitle],
+        ["about_heading", cfg.about_heading || defaultConfig.about_heading],
+        ["stats_heading", cfg.stats_heading || defaultConfig.stats_heading],
+        ["contact_heading", cfg.contact_heading || defaultConfig.contact_heading]
+      ]);
+    }
+
+    // Initialize SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu when clicking a link
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Contact form handling
+    const contactForm = document.getElementById('contact-form');
+    const formMessage = document.getElementById('form-message');
+    
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const formData = new FormData(contactForm);
+      const name = formData.get('name');
+      
+      // Show success message
+      formMessage.className = 'mt-4 text-center p-4 rounded-xl bg-green-500/20 text-green-400';
+      formMessage.textContent = `Thank you, ${name}! Your message has been received. I'll get back to you soon.`;
+      formMessage.classList.remove('hidden');
+      
+      // Reset form
+      contactForm.reset();
+      
+      // Hide message after 5 seconds
+      setTimeout(() => {
+        formMessage.classList.add('hidden');
+      }, 5000);
+    });
+
+    // Animate skill bars on scroll
+    const observerOptions = {
+      threshold: 0.5,
+      rootMargin: '0px'
+    };
+
+    const skillBars = document.querySelectorAll('.skill-bar');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.width = entry.target.style.width;
+        }
+      });
+    }, observerOptions);
+
+    skillBars.forEach(bar => observer.observe(bar));
+
+    // Initial render
+    onConfigChange(config);
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ca0b96a77bfca11',t:'MTc3MDQ0NDYyOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
